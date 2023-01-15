@@ -1,0 +1,30 @@
+.home-body {
+    display: flex;
+}
+
+.home-content {
+    padding: 3rem;
+    width: 1126px;
+}
+
+.home-user {
+    margin-bottom: 2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    font-family: sans-serif;
+}
+
+.home-user-hello {
+    font-size: 48px;
+    font-family: sans-serif;
+}
+
+.home-user-firstname {
+    font-size: 48px;
+    color: red;
+}
+
+.home-user-greetings {
+    font-size: 18px;
+    font-weight: 400;
+}
