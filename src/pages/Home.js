@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { getUserData } from '../utils/FormatData';
 import HorizontalNav from '../components/HorizontalNav';
 import VerticalNav from '../components/VerticalNav';
+import DailyActivityChart from "../components/DailyActivityChart"
 import "../styles/pages/home.css"
 
 const Home = () => {
-
-	const id = 12;
+	const id = 18;
 	const [datas, setDatas] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -18,7 +18,6 @@ const Home = () => {
 		fetchDatas();
 		setIsLoading(false);
 	}, [isLoading]);
-
 
 	return (
 		<div className='home'>
@@ -34,6 +33,11 @@ const Home = () => {
 						<span className="home-user-greetings">
 							Félicitation ! Vous avez explosé vos objectifs hier 👏
 						</span>
+					</div>
+					<div className="home-user-greetings">
+						<div className="home-charts-first-column">
+							<DailyActivityChart id={id} />
+						</div>
 					</div>
 				</div>
 			</div>

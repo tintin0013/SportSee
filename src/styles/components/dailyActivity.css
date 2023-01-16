@@ -1,0 +1,20 @@
+.daily-activity {
+    height: 320px;
+    width: 835px;
+}
+
+.daily-activity-chart {
+    background-color: #fbfbfb;
+    border-radius: 8px;
+}
+
+.activity-tooltip {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #e60000;
+    padding: 1rem;
+    border: none;
+    color: white;
+    font-size: 10px;
+}

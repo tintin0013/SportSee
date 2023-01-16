@@ -12,4 +12,9 @@ export default class API {
                 );
                 return res.data;
         }
+
+        async getActivity(id) {
+            const res = await axios.get(`http://localhost:3000/user/${id}/activity`);
+            return res.data;
+        }
 }

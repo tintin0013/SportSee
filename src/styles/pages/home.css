@@ -9,14 +9,13 @@
 
 .home-user {
     margin-bottom: 2rem;
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 3rem;
     font-family: sans-serif;
 }
 
 .home-user-hello {
     font-size: 48px;
-    font-family: sans-serif;
 }
 
 .home-user-firstname {
@@ -27,4 +26,16 @@
 .home-user-greetings {
     font-size: 18px;
     font-weight: 400;
+}
+
+.home-charts {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.home-charts-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
