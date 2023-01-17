@@ -17,4 +17,9 @@ export default class API {
             const res = await axios.get(`http://localhost:3000/user/${id}/activity`);
             return res.data;
         }
+
+        async getAverageSessions(id) {
+            const res = await axios.get(`http://localhost:3000/user/${id}/average-sessions`);
+            return res.data;
+        }
 }

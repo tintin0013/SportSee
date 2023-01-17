@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { getUserData } from '../utils/FormatData';
 import HorizontalNav from '../components/HorizontalNav';
 import VerticalNav from '../components/VerticalNav';
-import DailyActivityChart from "../components/DailyActivityChart"
+import DailyActivityChart from "../components/DailyActivityChart";
+import AverageDurationChart from "../components/AverageDurationChart";
+
 import "../styles/pages/home.css"
 
 const Home = () => {
@@ -37,6 +39,9 @@ const Home = () => {
 					<div className="home-user-greetings">
 						<div className="home-charts-first-column">
 							<DailyActivityChart id={id} />
+							<div className="home-charts-first-column-row-3">
+								<AverageDurationChart id={id} />
+							</div>
 						</div>
 					</div>
 				</div>

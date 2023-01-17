@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { getDailyActivityData } from "../utils/FormatData";
@@ -72,7 +73,8 @@ const DailyActivityChart = (userId) => {
 								axisLine={false}
 								tick={{ fill: "#9B9BAC", fontWeight: 500, fontSize: 14 }}
 								tickMargin={40}
-								minTickGap={30}/>
+								minTickGap={30}
+								/>
 							<YAxis yAxisId="calories" hide />
 							<Tooltip content={<CustomTooltip />} />
 							<Legend
