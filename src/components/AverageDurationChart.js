@@ -17,8 +17,8 @@ const AverageDurationChart = (userId) => {
 		}
 		fetchDatas();
 		setIsLoading(false);
-	// }, [isLoading]);
-		}, [userId]);
+		// }, [userId]);
+	}, [isLoading]);
 	
 	const Title = () => {
 		return <div className="average-title">Durée moyenne des sessions</div>;

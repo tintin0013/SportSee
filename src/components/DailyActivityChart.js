@@ -17,10 +17,11 @@ const DailyActivityChart = (userId) => {
 		}
 		fetchDatas();
 		setIsLoading(false);
-	// }, [isLoading]);
-        }, [userId]);
+        // }, [userId]);
+	}, [isLoading]);
 	
 	const CustomTooltip = ({ active, payload }) => {
+	
 		if (active && payload && payload.length) {
 			return (
 				<div className="activity-tooltip">
@@ -39,6 +40,7 @@ const DailyActivityChart = (userId) => {
 
 	return (
 		<>
+			{isLoading && <div>Loading</div>}
 			{!isLoading && (
 				<div className="daily-activity">
 					<ResponsiveContainer

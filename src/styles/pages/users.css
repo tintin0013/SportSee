@@ -1,0 +1,23 @@
+.page-users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: x-large;
+    margin-top: -35rem;
+}
+
+.h2-user {
+    color: blue;
+}
+
+.choix-user {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5rem;
+    gap: 3rem;
+    font-size: xx-large;
+}
+
+.lien-user {
+    color: red;
+}

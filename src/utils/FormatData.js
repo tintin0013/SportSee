@@ -37,4 +37,27 @@ export async function getAverageChartData(id) {
 	return results;
 }
 
+export async function getRadarData(id) {
+	const api = new API();
+	const response = await api.getPerformance(id);
+	const userData = response.data.data;
+	const Kind = [
+		"Cardio",
+		"Energie",
+		"Endurance",
+		"Force",
+		"Vitesse",
+		"Intensité",
+	];
+	let stat = userData.map(({ value, kind }) => {
+		return {
+			value: value,
+			kind: Kind[kind - 1],
+		};
+	});
+	return stat;
+}
+
+
+
 
