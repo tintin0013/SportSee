@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { getRadarData } from "../utils/FormatData";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import "../styles/components/radarChart.css"
@@ -44,8 +44,8 @@ const Chart = (userId) => {
 	);
 };
 
-// Chart.propTypes = {
-// 	id: PropTypes.number.isRequired,
-// };
+Chart.propTypes = {
+	id: PropTypes.number.isRequired,
+};
 
 export default Chart;

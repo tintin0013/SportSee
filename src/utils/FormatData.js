@@ -58,6 +58,12 @@ export async function getRadarData(id) {
 	return stat;
 }
 
+export async function getScoreData(id) {
+	const api = new API();
 
+	const response = await api.getUser(id);
+	const userData = response.data.todayScore || response.data.score;
+	return userData;
+}
 
 
