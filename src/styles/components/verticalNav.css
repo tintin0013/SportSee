@@ -8,7 +8,6 @@
     align-items: center;
     width: 117px;
     background-color: black;
-    /* height: calc(100vh - 20px); */
     height: 100vh;
     gap: 1rem;
 }
@@ -18,7 +17,6 @@
     color: white;
     transform: rotate(-90deg);
     width: max-content;
-    /* bottom: 100px; */
     bottom: 125px;
     font-size: 12px;
 }

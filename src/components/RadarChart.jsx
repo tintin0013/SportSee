@@ -6,20 +6,33 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
 import "../styles/components/radarChart.css"
 
 
+/**
+ * @component React component to display radar chart datas
+ * @param {number} userId user id
+ * @returns {JSX.Element} radar chart (kinds and values)
+ */
+
 const Chart = (userId) => {
 	const [datas, setDatas] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		async function fetchDatas() {
+			/**
+			 * Call the import and format function
+			 * @param {number} id id of the user
+			 * @return {Array<object>} Radar datas (kinds and values)
+			 */
 			const newDatas = await getRadarData(userId.id);
 			setDatas(newDatas);
+			setIsLoading(false);
 		}
 		fetchDatas();
-		setIsLoading(false);
 	}, [isLoading]);
-	// }, [userId]);
 
+	/**
+	 * @returns {JSX.Element} radar chart (kinds and values)
+	 */
 	return (
 		<>
 			{isLoading && <div>Loading</div>}

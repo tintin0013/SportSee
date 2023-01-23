@@ -5,26 +5,47 @@ import { getScoreData } from "../utils/FormatData";
 import { RadialBarChart, RadialBar, Legend, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import "../styles/components/scoreChart.css"
 
+
+/**
+ *
+ * @component React component to display the score graph
+ * @param {number} userId  user id
+ * @returns {JSX.Element} ScoreGraph component
+ */
+
 const ScoreChart = (userId) => {
 	const [datas, setDatas] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		async function fetchDatas() {
+			/**
+			 * Call the import and format function
+			 * @param {number} id - id of the user
+			 * @return {Array<object>} Average sessions datas (days and duration)
+			 */
 			const newDatas = await getScoreData(userId.id);
 			setDatas(newDatas);
+			setIsLoading(false);
 		}
 		fetchDatas();
-		setIsLoading(false);
 	}, [isLoading]);
 
+	/**
+	 * Score has to be in % so datas are multiplied by 100
+	 */
 	const score = [
 		{
 			uv: datas * 100,
 			fill: "#ff0000",
 		},
 	];
-
+	/**
+	 * @returns {JSX.Element} Graph's legend
+	 */
+	/**
+	 * Display the score in the middle of the graph
+	 */
 	const ScoreLegend = () => {
 		return (
 			<>

@@ -1,7 +1,8 @@
 [
     {
        "id":12,
-       "mainData":{
+       "data":{
+         "id":12,
           "userInfos":{
              "firstName":"Karl",
              "lastName":"Dovineau",
@@ -125,7 +126,8 @@
     },
     {
        "id":18,
-       "mainData":{
+       "data":{
+         "id":18,
           "userInfos":{
              "firstName":"Cecilia",
              "lastName":"Ratorez",
@@ -143,37 +145,37 @@
           "sessions":[
              {
                 "day":"2020-07-01",
-                "kilogram":80,
+                "kilogram":70,
                 "calories":240
              },
              {
                 "day":"2020-07-02",
-                "kilogram":80,
+                "kilogram":69,
                 "calories":220
              },
              {
                 "day":"2020-07-03",
-                "kilogram":81,
+                "kilogram":70,
                 "calories":280
              },
              {
                 "day":"2020-07-04",
-                "kilogram":81,
-                "calories":290
+                "kilogram":70,
+                "calories":500
              },
              {
                 "day":"2020-07-05",
-                "kilogram":80,
+                "kilogram":69,
                 "calories":160
              },
              {
                 "day":"2020-07-06",
-                "kilogram":78,
+                "kilogram":69,
                 "calories":162
              },
              {
                 "day":"2020-07-07",
-                "kilogram":76,
+                "kilogram":69,
                 "calories":390
              }
           ]
@@ -186,27 +188,27 @@
              },
              {
                 "day":2,
-                "sessionLength":23
+                "sessionLength":40
              },
              {
                 "day":3,
-                "sessionLength":45
-             },
-             {
-                "day":4,
                 "sessionLength":50
              },
              {
+                "day":4,
+                "sessionLength":30
+             },
+             {
                 "day":5,
-                "sessionLength":0
+                "sessionLength":30
              },
              {
                 "day":6,
-                "sessionLength":0
+                "sessionLength":50
              },
              {
                 "day":7,
-                "sessionLength":60
+                "sessionLength":50
              }
           ]
        },

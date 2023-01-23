@@ -7,6 +7,11 @@ import dumbell from "../assets/icon-dumbell.png";
 import "../styles/components/verticalNav.css";
 
 
+/**
+ * React component for the vertical navigation bar
+ * @returns {JSX.Element}
+ */
+
 const VerticalNav = () => {
 	return (
 		<div className="vertical-nav">

@@ -5,25 +5,44 @@ import { getAverageChartData } from "../utils/FormatData";
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Rectangle } from "recharts";
 import "../styles/components/averageSession.css"
 
+
+/**
+ * @component React component to display average duration chart
+ * @param {number} userId id of the user
+ * @returns {JSX.Element} Average sessions datas (days and duration)
+ */
+
 const AverageDurationChart = (userId) => {
 	const [datas, setDatas] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		async function fetchDatas() {
-			
+			/**
+			 * Call the import and format function
+			 * @param {number} id id of the user
+			 * @return {Array<object>} Average sessions datas (days and duration)
+			 */
 			const newDatas = await getAverageChartData(userId.id);
 			setDatas(newDatas);
+			setIsLoading(false);
 		}
 		fetchDatas();
-		setIsLoading(false);
-		// }, [userId]);
 	}, [isLoading]);
-	
+
+	/**
+	 *
+	 * @returns {JSX.Element} A div with text
+	 */
 	const Title = () => {
 		return <div className="average-title">Durée moyenne des sessions</div>;
 	};
 
+	/**
+	 * @param {boolean}  [Props.active='true'] active tooltip
+	 * @param {array}   [Props.payload=[]] payload of the tooltip
+	 * @returns an active tooltip
+	 */
 	const CustomizedTooltip = ({ active, payload }) => {
 		if (active && payload && payload.length) {
 			return (
@@ -39,7 +58,12 @@ const AverageDurationChart = (userId) => {
 		active: PropTypes.bool,
 		payload: PropTypes.array,
 	};
-	
+	/**
+	 * @returns {JSX.Element} Average sessions datas (days and duration)
+	 */
+	/**
+	 * A darker rectangle following the mouse on the chart
+	 */
 	const CustomCursor = ({ points }) => {
 		return (
 			<Rectangle

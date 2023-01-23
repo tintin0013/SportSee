@@ -1,47 +1,158 @@
 import axios from "axios";
-// import Mocked from "./Mocked"
 
+/**
+ * @file Fetch API class using axios or Fetch json file
+ * */
 export default class API {
-    // constructor() {
-    // }
+    constructor() {
+        this.mockMode = true
+    }
 
-        async getUser(id) {
-            const res = await axios
+    changeMockMode(newMockMode) {
+        this.mockMode = newMockMode
+    }
+
+        /**
+         * Fetch user datas
+         * @param {number} id of user
+         * @returns {object} user datas
+         */
+        async getUser(id) { 
+
+            /**
+             * Fetch datas from json file
+             * @type {object} contains userInfos
+             */
+            if (this.mockMode) {
+                const res = await fetch(`../db.json`);
+                const datas = await res.json();
+                for(const d of datas)  {
+                    if(d.data.id===id){
+                        return d;
+                    }
+                }
+            }
+            /**
+             * Fetch datas from API
+             * @type {object} contains userInfos
+             */
+            else {
+                const res = await axios
                 .get(`http://localhost:3000/user/${id}`)
-                .catch((fonction) => 
-                    /* It's an alert that will be displayed if the server is unavailable. */
-                    alert("Erreur 503 : The server is currently unavailable.")
-                    // fetch(`../db.json/${id}`)
-                    // .then((response) => response.json())
-                    // .then((res) => {
-                    //     console.log(res)
-                    //     console.log(res.data)
-                    //     return res.data;
-                    // })
-
-
-                    // axios.get("./public/db.json")
-                    // .then((res) =>
-                    //  )
-                )
-                return res.data;
+                    return res.data;
+                }
         }
 
+        /**
+         * Fetch activity datas
+         * @param {number} id of user
+         * @returns {object} activity datas
+         */
         async getActivity(id) {
-            const res = await axios
-            .get(`http://localhost:3000/user/${id}/activity`);
-            return res.data;
-        }
 
+            /**
+             * Fetch datas from json file
+             * @type {object} contains sessions
+             */
+            if (this.mockMode){
+                const res = await fetch(`../db.json`);
+                const datas = await res.json();
+                let returnValue={
+                    "data": undefined
+                };
+                for(const d of datas)  {
+                    if(d.data.id===id){
+                        let sessions = {}
+                        sessions = d.activity.sessions
+                        returnValue.data = {sessions}
+                        return returnValue;
+                    }    
+                }
+            }
+            /**
+             * Fetch datas from API
+             * @type {object} contains sessions
+             */
+            else {
+                const res = await axios
+                .get(`http://localhost:3000/user/${id}/activity`);
+                return res.data;
+            }
+        }
+      
+        /**
+         * Fetch average sessions datas
+         * @param {number} id of user
+         * @returns {object} average sessions datas
+         */
         async getAverageSessions(id) {
-            const res = await axios
-            .get(`http://localhost:3000/user/${id}/average-sessions`);
-            return res.data;
+
+            /**
+             * Fetch datas from json file
+             * @type {object} contains sessions
+             */
+            if (this.mockMode){
+                 const res = await fetch(`../db.json`);
+                const datas = await res.json();
+                let returnValue={
+                    "data": undefined
+                };
+                for(const d of datas)  {
+                    if(d.data.id===id){
+                        let sessions = {}
+                        sessions = d.averageSessions.sessions
+                        returnValue.data = {sessions}
+                        return returnValue;
+                    }    
+                }
+            }
+            /**
+             * Fetch datas from API
+             * @type {object} contains sessions
+             */
+            else {
+                const res = await axios
+                .get(`http://localhost:3000/user/${id}/average-sessions`);
+                return res.data;
+            }
         }
 
+        /**
+	 * Fetch performances datas
+	 * @param {number} id of user
+	 * @returns {object} performances datas
+	 */
         async getPerformance(id) {
-            const res = await axios
-            .get(`http://localhost:3000/user/${id}/performance`);
-            return res.data;
+
+            /**
+             * Fetch datas from json file
+             * @type {object} contains performances
+             */
+            if (this.mockMode){
+                const res = await fetch(`../db.json`);
+                const datas = await res.json();
+                let returnValue={
+                    "data": undefined
+                };
+               
+                for(const d of datas)  {
+                    if(d.data.id===id){
+                        let data = {}
+                         data = d.performance.data
+                        let kind = d.performance.kind
+                        returnValue.data = {data,kind}
+                        return returnValue;
+                    }    
+                }
+            }
+            /**
+             * Fetch datas from API
+             * @type {object} contains performances
+             */
+            else {
+                const res = await axios
+                .get(`http://localhost:3000/user/${id}/performance`);
+                return res.data;
+            }
         }
 }

@@ -4,6 +4,11 @@ import logo from "../assets/logo.png";
 import "../styles/components/horizontalNav.css";
 
 
+/**
+ * react component for the horizontal navigation bar
+ * @returns {JSX.Element}
+ */
+
 const HorizontalNav = () => {
 	return (
 		<div className="horizontal-nav">

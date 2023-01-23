@@ -2,9 +2,15 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { getDailyActivityData } from "../utils/FormatData";
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import "../styles/components/dailyActivity.css"
 
+
+/**
+ * @component React component to display daily activity chart
+ * @param {number} userId user id
+ * @returns {JSX.Element} Daily activity datas (sessions, kg and calories)
+ */
 
 const DailyActivityChart = (userId) => {
 	const [datas, setDatas] = useState([]);
@@ -12,16 +18,24 @@ const DailyActivityChart = (userId) => {
 
 	useEffect(() => {
 		async function fetchDatas() {
+			/**
+			 * Call the import and format function
+			 * @param {number} id id of the user
+			 * @return {Array<object>} Daily activity datas (sessions, kg and calories)
+			 */
 			const newDatas = await getDailyActivityData(userId.id);
 			setDatas(newDatas);
+			setIsLoading(false);
 		}
 		fetchDatas();
-		setIsLoading(false);
-        // }, [userId]);
 	}, [isLoading]);
-	
+
+	/**
+	 * @param {boolean}  [Props.active='true'] active tooltip
+	 * @param {array}   [Props.payload=[]] payload of the tooltip
+	 * @returns an active tooltip
+	 */
 	const CustomTooltip = ({ active, payload }) => {
-	
 		if (active && payload && payload.length) {
 			return (
 				<div className="activity-tooltip">
@@ -38,6 +52,9 @@ const DailyActivityChart = (userId) => {
 		payload: PropTypes.array,
 	};
 
+	/**
+	 * @returns {JSX.Element} daily activity chart (sessions, kg and calories)
+	 */
 	return (
 		<>
 			{isLoading && <div>Loading</div>}
@@ -66,7 +83,7 @@ const DailyActivityChart = (userId) => {
 								stroke=" #DEDEDE"
 								tick={{ fill: "#9B9BAC", fontWeight: 500, fontSize: 14 }}
 								padding={{ left: -50, right: -50 }}
-								tickMargin={16}/>
+								tickMargin={16} />
 							<YAxis
 								yAxisId="kilogram"
 								domain={["dataMin -1", "dataMax +2"]}
@@ -76,7 +93,7 @@ const DailyActivityChart = (userId) => {
 								tick={{ fill: "#9B9BAC", fontWeight: 500, fontSize: 14 }}
 								tickMargin={40}
 								minTickGap={30}
-								/>
+							/>
 							<YAxis yAxisId="calories" hide />
 							<Tooltip content={<CustomTooltip />} />
 							<Legend

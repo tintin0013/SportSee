@@ -8,17 +8,41 @@ import DailyActivityChart from "../components/DailyActivityChart";
 import AverageDurationChart from "../components/AverageDurationChart";
 import RadarChart from "../components/RadarChart";
 import ScoreChart from "../components/ScoreChart";
+import Macronutrient from "../components/Macronutrient";
 import "../styles/pages/home.css"
 
+/**
+ * @file React component for display the main page of the app
+ * Render the whole page and call the charts components
+ * @returns {JSX.Element} Main page components
+ */
+
 const Home = () => {
-	let { id } = useParams();
-	id = parseInt(id)
-	// console.log(id)
-	// console.log(typeof id)
+
 	const navigate = useNavigate();
+
+	/**
+	 * Id of the wanted user, currently 12 or 18
+	 * @type {number} id
+	 */
+	let { id } = useParams();
+	if (isNaN(id)) {
+		navigate("../pages/Error.jsx")
+	}
+	id = parseInt(id)
 	const [datas, setDatas] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
+	/**
+	 * call the getUserData fonction
+	 * @param {number} id - id of the user
+	 */
+	/**
+	 *  useEffect to perform side effects
+	 *  call the import datas function
+	 * @param {id} id - id of the user
+	 * @returns {object} datas - datas of the user
+	 */
 	useEffect(() => {
 		async function fetchDatas() {
 			if (id !== 12 && id !== 18) {
@@ -26,19 +50,17 @@ const Home = () => {
 			}
 			const newDatas = await getUserData(id);
 			setDatas(newDatas);
-
+			setIsLoading(false);
 		}
 		fetchDatas();
-		setIsLoading(false);
 	}, [isLoading]);
 
-
 	return (
-		<div className='home'>
+		<div className="home">
 			<HorizontalNav />
-			<div className='home-body'>
+			<div className="home-body">
 				<VerticalNav />
-				<div className='home-content'>
+				<div className="home-content">
 					<div className="home-user">
 						<span className="home-user-hello">Bonjour </span>
 						<span className="home-user-firstname">{datas.firstName}</span>
@@ -48,7 +70,7 @@ const Home = () => {
 							Félicitation ! Vous avez explosé vos objectifs hier 👏
 						</span>
 					</div>
-					<div className="home-user-greetings">
+					<div className="home-charts">
 						<div className="home-charts-first-column">
 							<DailyActivityChart id={id} />
 							<div className="home-charts-first-column-row-3">
@@ -56,6 +78,9 @@ const Home = () => {
 								<RadarChart id={id} />
 								<ScoreChart id={id} />
 							</div>
+						</div>
+						<div className="home-charts-second-column">
+							<Macronutrient id={id} />
 						</div>
 					</div>
 				</div>
