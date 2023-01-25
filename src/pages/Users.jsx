@@ -7,7 +7,7 @@ import "../styles/pages/users.css"
 
 /**
  * @file React component to display the users page
- * @returns {JSX.Element}
+ * @returns {JSX.Element} users page
  */
 
 const Users = () => {

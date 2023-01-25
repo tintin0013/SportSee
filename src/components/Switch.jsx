@@ -5,26 +5,30 @@ import "../styles/components/switch.css"
 
 
 /**
- * React component to display a switch and change the state of the switch
+ * @file React component to display a switch and change the state of the switch
  * @returns {JSX.Element}
 */
 
+/**
+ * @param {boolean} isChecked - state of the switch
+ * @param {function} setIsChecked - function to change the state of the switch
+ * @param {boolean} rounded - boolean to change the shape of the switch
+ * @param {function} handleChange - function to change the state of the switch
+ * @param {string} sliderCX - class name of the switch
+ * @param {boolean} change - change the state of the switch
+ * @param {function} changeMockMode - function to change the state of the switch in the API
+ * @returns {JSX.Element} switch
+ */
 const Switch = ({ rounded = true, }) => {
     const sliderCX = cx('slider', {
         'rounded': rounded
     })
-
-    /**
-     * @param {boolean} isChecked - state of the switch
-     * @param {function} setIsChecked - function to change the state of the switch
-     */
+   
     const [isChecked, setIsChecked] = useState([])
     let change = getAPI()
     const handleChange = event => {
         /**
          * event of the switch
-         * @param {boolean} change - change the state of the switch 
-         * @param {function} changeMockMode - function to change the state of the switch in the API
          */
         if (event.target.checked) {
             change.changeMockMode(false)

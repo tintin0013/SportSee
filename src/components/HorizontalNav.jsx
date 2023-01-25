@@ -5,8 +5,8 @@ import "../styles/components/horizontalNav.css";
 
 
 /**
- * react component for the horizontal navigation bar
- * @returns {JSX.Element}
+ * @file react component for the horizontal navigation bar
+ * @returns {JSX.Element} horizontal navigation bar
  */
 
 const HorizontalNav = () => {

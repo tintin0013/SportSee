@@ -7,7 +7,7 @@ import "../styles/pages/error.css"
 
 /**
  * @file React component to display the error page
- * @returns {JSX.Element}
+ * @returns {JSX.Element} error page
  */
 
 const Error = () => {

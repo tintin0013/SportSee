@@ -8,8 +8,8 @@ import "../styles/components/verticalNav.css";
 
 
 /**
- * React component for the vertical navigation bar
- * @returns {JSX.Element}
+ * @file React component for the vertical navigation bar
+ * @returns {JSX.Element} vertical navigation bar
  */
 
 const VerticalNav = () => {
