@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/AverageDurationChart.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/AverageDurationChart.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { getAverageChartData } from "../utils/FormatData";
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Rectangle } from "recharts";
+import "../styles/components/averageSession.css"
+
+
+/**
+ * React component to display average duration chart
+ * @param {number} userId id of the user
+ * @param {string} name name of the user
+ * @param {number} sessionLength length of the session 
+ * @returns {JSX.Element} Average sessions datas (days and duration)
+ */
+
+const AverageDurationChart = (userId) => {
+	const [datas, setDatas] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		async function fetchDatas() {
+			/**
+			 * Call the import and format function
+			 * {Array&lt;object>} Average sessions datas (days and duration)
+			 */
+			const newDatas = await getAverageChartData(userId.id);
+			setDatas(newDatas);
+			setIsLoading(false);
+		}
+		fetchDatas();
+	}, [isLoading]);
+
+	/**
+	 *
+	 * @returns {JSX.Element} A div with text
+	 */
+	const Title = () => {
+		return &lt;div className="average-title">Durée moyenne des sessions&lt;/div>;
+	};
+
+	/**
+	 * @param {boolean}  [Props.active='true'] active tooltip
+	 * @param {array}   [Props.payload=[]] payload of the tooltip
+	 * @returns an active tooltip
+	 */
+	const CustomizedTooltip = ({ active, payload }) => {
+		if (active &amp;&amp; payload &amp;&amp; payload.length) {
+			return (
+				&lt;div className="session-tooltip">
+					&lt;p className="session-tooltip-min">{`${payload[0].value} min`}&lt;/p>
+				&lt;/div>
+			);
+		}
+		return null;
+	};
+
+	CustomizedTooltip.propTypes = {
+		active: PropTypes.bool,
+		payload: PropTypes.array,
+	};
+	/**
+	 * @returns {JSX.Element} Average sessions datas (days and duration)
+	 */
+	/**
+	 * A darker rectangle following the mouse on the chart
+	 */
+	const CustomCursor = ({ points }) => {
+		return (
+			&lt;Rectangle
+				fill="#000000"
+				opacity={0.2}
+				x={points[0].x}
+				width={500}
+				height={300}
+			/>
+		);
+	};
+
+	return (
+		&lt;>
+			{isLoading &amp;&amp; &lt;div>Loading&lt;/div>}
+			{!isLoading &amp;&amp; (
+				&lt;div className="average-session">
+					&lt;ResponsiveContainer width="100%" height="100%">
+						{
+							&lt;LineChart
+								width={500}
+								height={300}
+								data={datas}
+								margin={{
+									top: 20,
+									right: 15,
+									left: 15,
+									bottom: 15,
+								}}
+							>
+								&lt;XAxis
+									dataKey="name"
+									stroke={""}
+									fillOpacity={0.5}
+									style={{ transform: "scale(0.9)", transformOrigin: "bottom" }}
+									tick={{ fill: "#ffffff", fontWeight: 500, fontSize: 14 }}
+								/>
+								&lt;YAxis hide={true} />
+								&lt;Line
+									type="monotone"
+									dataKey="sessionLength"
+									stroke="#FFFFFF"
+									dot={false}
+									strokeWidth={2}
+								/>
+								&lt;Tooltip
+									content={&lt;CustomizedTooltip />}
+									cursor={&lt;CustomCursor />}
+								/>
+								&lt;Legend verticalAlign="top" align="left" content={Title} />
+							&lt;/LineChart>
+						}
+					&lt;/ResponsiveContainer>
+				&lt;/div>
+			)}
+		&lt;/>
+	);
+};
+
+AverageDurationChart.propTypes = {
+	id: PropTypes.number.isRequired,
+};
+
+export default AverageDurationChart;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AverageDurationChart">AverageDurationChart</a></li><li><a href="global.html#DailyActivityChart">DailyActivityChart</a></li><li><a href="global.html#HorizontalNav">HorizontalNav</a></li><li><a href="global.html#Macronutrient">Macronutrient</a></li><li><a href="global.html#RadarsChart">RadarsChart</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalNav">VerticalNav</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageChartData">getAverageChartData</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getDailyActivityData">getDailyActivityData</a></li><li><a href="global.html#getMacronutrientData">getMacronutrientData</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getRadarData">getRadarData</a></li><li><a href="global.html#getScoreData">getScoreData</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserData">getUserData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Jan 25 2023 19:34:14 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

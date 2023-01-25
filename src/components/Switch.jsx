@@ -5,7 +5,7 @@ import "../styles/components/switch.css"
 
 
 /**
- * @component React component to display a switch and change the state of the switch
+ * React component to display a switch and change the state of the switch
  * @returns {JSX.Element}
 */
 
@@ -22,8 +22,7 @@ const Switch = ({ rounded = true, }) => {
     let change = getAPI()
     const handleChange = event => {
         /**
-         * @type {object} event - event of the switch
-         * @type {object} change - object of the API
+         * event of the switch
          * @param {boolean} change - change the state of the switch 
          * @param {function} changeMockMode - function to change the state of the switch in the API
          */

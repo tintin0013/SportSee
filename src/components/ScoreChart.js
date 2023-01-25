@@ -8,8 +8,9 @@ import "../styles/components/scoreChart.css"
 
 /**
  *
- * @component React component to display the score graph
+ * React component to display the score graph
  * @param {number} userId  user id
+ * @param {number} score score of the user
  * @returns {JSX.Element} ScoreGraph component
  */
 
@@ -21,8 +22,7 @@ const ScoreChart = (userId) => {
 		async function fetchDatas() {
 			/**
 			 * Call the import and format function
-			 * @param {number} id - id of the user
-			 * @return {Array<object>} Average sessions datas (days and duration)
+			 * {Array<object>} Average sessions datas (days and duration)
 			 */
 			const newDatas = await getScoreData(userId.id);
 			setDatas(newDatas);

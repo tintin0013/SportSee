@@ -6,7 +6,7 @@ import Switch from "../components/Switch";
 import "../styles/pages/users.css"
 
 /**
- * React component to display the users page
+ * @file React component to display the users page
  * @returns {JSX.Element}
  */
 

@@ -6,7 +6,7 @@ import "../styles/pages/error.css"
 
 
 /**
- * React component to display the error page
+ * @file React component to display the error page
  * @returns {JSX.Element}
  */
 

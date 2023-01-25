@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/ScoreChart.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/ScoreChart.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { getScoreData } from "../utils/FormatData";
+import { RadialBarChart, RadialBar, Legend, PolarAngleAxis, ResponsiveContainer } from "recharts";
+import "../styles/components/scoreChart.css"
+
+
+/**
+ *
+ * React component to display the score graph
+ * @param {number} userId  user id
+ * @param {number} score score of the user
+ * @returns {JSX.Element} ScoreGraph component
+ */
+
+const ScoreChart = (userId) => {
+	const [datas, setDatas] = useState();
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		async function fetchDatas() {
+			/**
+			 * Call the import and format function
+			 * {Array&lt;object>} Average sessions datas (days and duration)
+			 */
+			const newDatas = await getScoreData(userId.id);
+			setDatas(newDatas);
+			setIsLoading(false);
+		}
+		fetchDatas();
+	}, [isLoading]);
+
+	/**
+	 * Score has to be in % so datas are multiplied by 100
+	 */
+	const score = [
+		{
+			uv: datas * 100,
+			fill: "#ff0000",
+		},
+	];
+	/**
+	 * @returns {JSX.Element} Graph's legend
+	 */
+	/**
+	 * Display the score in the middle of the graph
+	 */
+	const ScoreLegend = () => {
+		return (
+			&lt;>
+				{isLoading &amp;&amp; &lt;div>Loading&lt;/div>}
+				{!isLoading &amp;&amp; datas &amp;&amp; (
+					&lt;div className="score-legend">
+						&lt;div className="score-legend-score">{datas * 100}%&lt;/div>
+						&lt;div className="score-legend-text">de votre&lt;br>&lt;/br> objectif&lt;/div>
+					&lt;/div>
+				)}
+			&lt;/>
+		);
+	};
+
+	return (
+		&lt;>
+			{isLoading &amp;&amp; &lt;div>Loading&lt;/div>}
+			{!isLoading &amp;&amp; score &amp;&amp; (
+				&lt;div className="score-chart">
+					&lt;ResponsiveContainer width="100%" height="100%">
+						&lt;RadialBarChart
+							innerRadius={80}
+							outerRadius={260}
+							barSize={10}
+							startAngle={-270}
+							endAngle={90}
+							data={score}
+						>
+							&lt;circle cx="50%" cy="50%" fill="white" r="80">&lt;/circle>
+							&lt;PolarAngleAxis
+								type="number"
+								domain={[0, 100]}
+								angleAxisId={0}
+								tick={false}
+							/>
+							&lt;RadialBar
+								background={{ fill: "#fbfbfb" }}
+								dataKey="uv"
+								cornerRadius="10"
+							/>
+							&lt;Legend
+								verticalAlign="middle"
+								align="center"
+								content={ScoreLegend}
+							/>
+							&lt;text
+								className="graphTitle"
+								x="10%"
+								y="15%"
+								dominantBaseline="middle"
+								style={{ fontWeight: 700, fontSize: 20 }}
+							>
+								Score
+							&lt;/text>
+						&lt;/RadialBarChart>
+					&lt;/ResponsiveContainer>
+				&lt;/div>
+			)}
+		&lt;/>
+	);
+};
+
+ScoreChart.propTypes = {
+	id: PropTypes.number.isRequired,
+};
+
+export default ScoreChart;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AverageDurationChart">AverageDurationChart</a></li><li><a href="global.html#DailyActivityChart">DailyActivityChart</a></li><li><a href="global.html#HorizontalNav">HorizontalNav</a></li><li><a href="global.html#Macronutrient">Macronutrient</a></li><li><a href="global.html#RadarsChart">RadarsChart</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalNav">VerticalNav</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageChartData">getAverageChartData</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getDailyActivityData">getDailyActivityData</a></li><li><a href="global.html#getMacronutrientData">getMacronutrientData</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getRadarData">getRadarData</a></li><li><a href="global.html#getScoreData">getScoreData</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserData">getUserData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Jan 25 2023 19:34:14 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

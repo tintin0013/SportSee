@@ -1,8 +1,8 @@
 {
     "source": {
-        "include": [ "src" ],
+        "include": [ "./src" ],
         "includePattern": ".+\\.js(doc|x)?$",
-        "excludePattern": "(^|\\/|\\\\|nodes_modules/|docs)"
+        "excludePattern": "(nodes_modules/|docs)"
     },
     "plugins": ["plugins/markdown"],
     "tags": {
@@ -14,8 +14,8 @@
         "monospaceLinks": true
     },
     "opts": {
-        "destination": "docs/",
-        "recurse": false,
+        "destination": "./docs/",
+        "recurse": true,
         "readme": "./README.md"
     }
 }

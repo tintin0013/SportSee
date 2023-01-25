@@ -10,8 +10,12 @@ import "../styles/components/macronutrient.css"
 
 
 /**
- * @component React component to display macronutrient datas
+ * React component to display macronutrient datas
  * @param {number} userId id of the user
+ * @param {number} kalorieCount calories count
+ * @param {number} proteinCount protein count
+ * @param {number} carbsCount carbs count
+ * @param {number} fatCount fat count
  * @returns {JSX.Element} Macronutrient datas (calories, protein, carbs and fat)
  */
 
@@ -23,8 +27,7 @@ const Macronutrient = (userId) => {
 		async function fetchDatas() {
 			/**
 			 * Call the import and format function
-			 * @param {number} id id of the user
-			 * @return {Array<object>} Macronutrient datas (calories, protein, carbs and fat)
+			 * {Array<object>} Macronutrient datas (calories, protein, carbs and fat)
 			 */
 			const newDatas = await getMacronutrientData(userId.id);
 			setDatas(newDatas);

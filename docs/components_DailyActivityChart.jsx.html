@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/DailyActivityChart.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/DailyActivityChart.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { getDailyActivityData } from "../utils/FormatData";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import "../styles/components/dailyActivity.css"
+
+
+/**
+ * React component to display daily activity chart
+ * @param {number} userId user id
+ * @param {number} kilogram kilogram of the user
+ * @param {number} calories calories of the user
+ * @param {number} day day of the user 
+ * @returns {JSX.Element} Daily activity datas (sessions, kg and calories)
+ */
+
+const DailyActivityChart = (userId) => {
+	const [datas, setDatas] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		async function fetchDatas() {
+			/**
+			 * Call the import and format function
+			 * {Array&lt;object>} Daily activity datas (sessions, kg and calories)
+			 */
+			const newDatas = await getDailyActivityData(userId.id);
+			setDatas(newDatas);
+			setIsLoading(false);
+		}
+		fetchDatas();
+	}, [isLoading]);
+
+	/**
+	 * @param {boolean}  [Props.active='true'] active tooltip
+	 * @param {array}   [Props.payload=[]] payload of the tooltip
+	 * @returns an active tooltip
+	 */
+	const CustomTooltip = ({ active, payload }) => {
+		if (active &amp;&amp; payload &amp;&amp; payload.length) {
+			return (
+				&lt;div className="activity-tooltip">
+					&lt;p className="activity-tooltip-kg">{`${payload[0].value}Kg`}&lt;/p>
+					&lt;p className="activity-tooltip-kcal">{`${payload[1].value}kCal`}&lt;/p>
+				&lt;/div>
+			);
+		}
+		return null;
+	};
+
+	CustomTooltip.propTypes = {
+		active: PropTypes.bool,
+		payload: PropTypes.array,
+	};
+
+	/**
+	 * @returns {JSX.Element} daily activity chart (sessions, kg and calories)
+	 */
+	return (
+		&lt;>
+			{isLoading &amp;&amp; &lt;div>Loading&lt;/div>}
+			{!isLoading &amp;&amp; (
+				&lt;div className="daily-activity">
+					&lt;ResponsiveContainer
+						width="100%"
+						height="100%"
+						className="daily-activity-chart">
+						&lt;BarChart
+							width={500}
+							height={300}
+							data={datas}
+							margin={{
+								top: 80,
+								right: 50,
+								left: 45,
+								bottom: 20,
+							}}
+							barSize={8}
+							barGap={8}>
+							&lt;CartesianGrid strokeDasharray="3 3" vertical={false} />
+							&lt;XAxis
+								dataKey="day"
+								tickLine={false}
+								stroke=" #DEDEDE"
+								tick={{ fill: "#9B9BAC", fontWeight: 500, fontSize: 14 }}
+								padding={{ left: -50, right: -50 }}
+								tickMargin={16} />
+							&lt;YAxis
+								yAxisId="kilogram"
+								domain={["dataMin -1", "dataMax +2"]}
+								tickLine={false}
+								orientation="right"
+								axisLine={false}
+								tick={{ fill: "#9B9BAC", fontWeight: 500, fontSize: 14 }}
+								tickMargin={40}
+								minTickGap={30}
+							/>
+							&lt;YAxis yAxisId="calories" hide />
+							&lt;Tooltip content={&lt;CustomTooltip />} />
+							&lt;Legend
+								className="activityLegend"
+								verticalAlign="top"
+								align="right"
+								iconType={"circle"}
+								iconSize={8}
+								width={300}
+								height={25}
+								wrapperStyle={{ top: 38, right: 32 }}
+								formatter={(value) => {
+									return (
+										&lt;span
+											style={{
+												color: "#74798C",
+												fontSize: 14,
+												fontWeight: 500,
+											}}>
+											{value}
+										&lt;/span>
+									);
+								}}
+							/>
+							&lt;Bar
+								yAxisId="kilogram"
+								dataKey="kilogram"
+								name="Poids (kg)"
+								fill="#282D30"
+								radius={[4, 4, 0, 0]}
+							/>
+							&lt;Bar
+								yAxisId="calories"
+								dataKey="calories"
+								name="Calories brûlées (kCal)"
+								fill="#E60000"
+								radius={[4, 4, 0, 0]}
+							/>
+							&lt;text
+								className="graphTitle"
+								x="5%"
+								y="15%"
+								dominantBaseline="middle"
+								fill="#20253A"
+								style={{ fontWeight: 700 }}
+							>
+								Activité quotidienne
+							&lt;/text>
+						&lt;/BarChart>
+					&lt;/ResponsiveContainer>
+				&lt;/div>
+			)}
+		&lt;/>
+	);
+};
+
+DailyActivityChart.propTypes = {
+	id: PropTypes.number.isRequired,
+};
+
+export default DailyActivityChart;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AverageDurationChart">AverageDurationChart</a></li><li><a href="global.html#DailyActivityChart">DailyActivityChart</a></li><li><a href="global.html#HorizontalNav">HorizontalNav</a></li><li><a href="global.html#Macronutrient">Macronutrient</a></li><li><a href="global.html#RadarsChart">RadarsChart</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalNav">VerticalNav</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageChartData">getAverageChartData</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getDailyActivityData">getDailyActivityData</a></li><li><a href="global.html#getMacronutrientData">getMacronutrientData</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getRadarData">getRadarData</a></li><li><a href="global.html#getScoreData">getScoreData</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserData">getUserData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Jan 25 2023 19:34:14 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

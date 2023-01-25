@@ -5,10 +5,6 @@ import Error from "./pages/Error";
 import Home from "./pages/Home";
 
 
-/**
- * React component to display the app
- */
-
 const App = () => {
 	return (
 		<div className="App">

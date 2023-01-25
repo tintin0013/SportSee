@@ -7,8 +7,10 @@ import "../styles/components/averageSession.css"
 
 
 /**
- * @component React component to display average duration chart
+ * React component to display average duration chart
  * @param {number} userId id of the user
+ * @param {string} name name of the user
+ * @param {number} sessionLength length of the session 
  * @returns {JSX.Element} Average sessions datas (days and duration)
  */
 
@@ -20,8 +22,7 @@ const AverageDurationChart = (userId) => {
 		async function fetchDatas() {
 			/**
 			 * Call the import and format function
-			 * @param {number} id id of the user
-			 * @return {Array<object>} Average sessions datas (days and duration)
+			 * {Array<object>} Average sessions datas (days and duration)
 			 */
 			const newDatas = await getAverageChartData(userId.id);
 			setDatas(newDatas);

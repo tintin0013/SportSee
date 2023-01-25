@@ -7,12 +7,14 @@ import "../styles/components/radarChart.css"
 
 
 /**
- * @component React component to display radar chart datas
+ * React component to display radar chart datas
  * @param {number} userId user id
+ * @param {number} value value of the kind
+ * @param {string} kind kind of the value
  * @returns {JSX.Element} radar chart (kinds and values)
  */
 
-const Chart = (userId) => {
+const RadarsChart = (userId) => {
 	const [datas, setDatas] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -20,8 +22,7 @@ const Chart = (userId) => {
 		async function fetchDatas() {
 			/**
 			 * Call the import and format function
-			 * @param {number} id id of the user
-			 * @return {Array<object>} Radar datas (kinds and values)
+			 * {Array<object>} Radar datas (kinds and values)
 			 */
 			const newDatas = await getRadarData(userId.id);
 			setDatas(newDatas);
@@ -57,8 +58,8 @@ const Chart = (userId) => {
 	);
 };
 
-Chart.propTypes = {
+RadarsChart.propTypes = {
 	id: PropTypes.number.isRequired,
 };
 
-export default Chart;
+export default RadarsChart;

@@ -23,7 +23,7 @@ const Home = () => {
 
 	/**
 	 * Id of the wanted user, currently 12 or 18
-	 * @type {number} id
+	 * {number} id
 	 */
 	let { id } = useParams();
 	if (isNaN(id)) {

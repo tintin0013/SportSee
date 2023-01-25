@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><p><img src="./src/assets/logo.png" alt="Getting Started"></p>
+<h1>Track performance !</h1>
+<p>app to track your workout performance.</p>
+<h3><code>Prerequisites</code></h3>
+<ul>
+<li>NodeJS (version 12.18)</li>
+<li>Yarn</li>
+<li>Axios</li>
+<li>Recharts</li>
+<li>Jsdoc</li>
+</ul>
+<p>If you are working with several versions of NodeJS, we recommend you install nvm. This tool will allow you to easily manage your NodeJS versions.</p>
+<h3><code>Launching the project</code></h3>
+<ul>
+<li>Fork the repository</li>
+<li>Clone it on your computer.</li>
+<li>The yarn command will allow you to install the dependencies.</li>
+<li>The <code>yarn dev</code> command will allow you to run the micro API.(Path <code>\P12-SportSee-API-Back</code>)</li>
+<li><code>npm start</code> on the front-end (Path <code>p12_sportsee</code>). Default port : 3001</li>
+</ul>
+<h3><code>Possible back-end endpoints</code></h3>
+<ul>
+<li><code>http://localhost:3000/user/${userId}</code> retrieves information from a user. This first endpoint includes the user id, user information (first name, last name and age), the current day's score (todayScore) and key data (calorie, macronutrient, etc.).</li>
+<li><code>http://localhost:3000/user/${userId}/activity</code> retrieves a user's activity day by day with kilograms and calories.</li>
+<li><code>http://localhost:3000/user/${userId}/average-sessions</code> retrieves the average sessions of a user per day. The week starts on Monday.</li>
+<li><code>http://localhost:3000/user/${userId}/performance</code> retrieves a user's performance (energy, endurance, etc.).</li>
+</ul>
+<p>Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.</p>
+<h3><code>Examples of queries</code></h3>
+<ul>
+<li><code>http://localhost:3000/user/12/performance</code> - Retrieves the performance of the user with id 12</li>
+<li>http://localhost:3000/user/18 <code>http://localhost:3000/user/18</code> - Retrieves user 18's main information.</li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>pages/Error.jsx</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>React component to display the error page</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_Error.jsx.html">pages/Error.jsx</a>, <a href="pages_Error.jsx.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>pages/Home.jsx</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>React component for display the main page of the app
+Render the whole page and call the charts components</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_Home.jsx.html">pages/Home.jsx</a>, <a href="pages_Home.jsx.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>pages/Users.jsx</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>React component to display the users page</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_Users.jsx.html">pages/Users.jsx</a>, <a href="pages_Users.jsx.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>utils/Api.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Fetch API class using axios or Fetch json file</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils_Api.js.html">utils/Api.js</a>, <a href="utils_Api.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>utils/FormatData.js</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>FormatData.js is an import and format datas file</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="utils_FormatData.js.html">utils/FormatData.js</a>, <a href="utils_FormatData.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AverageDurationChart">AverageDurationChart</a></li><li><a href="global.html#DailyActivityChart">DailyActivityChart</a></li><li><a href="global.html#HorizontalNav">HorizontalNav</a></li><li><a href="global.html#Macronutrient">Macronutrient</a></li><li><a href="global.html#RadarsChart">RadarsChart</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalNav">VerticalNav</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageChartData">getAverageChartData</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getDailyActivityData">getDailyActivityData</a></li><li><a href="global.html#getMacronutrientData">getMacronutrientData</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getRadarData">getRadarData</a></li><li><a href="global.html#getScoreData">getScoreData</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserData">getUserData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Jan 25 2023 19:34:14 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

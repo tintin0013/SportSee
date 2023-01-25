@@ -7,8 +7,11 @@ import "../styles/components/dailyActivity.css"
 
 
 /**
- * @component React component to display daily activity chart
+ * React component to display daily activity chart
  * @param {number} userId user id
+ * @param {number} kilogram kilogram of the user
+ * @param {number} calories calories of the user
+ * @param {number} day day of the user 
  * @returns {JSX.Element} Daily activity datas (sessions, kg and calories)
  */
 
@@ -20,8 +23,7 @@ const DailyActivityChart = (userId) => {
 		async function fetchDatas() {
 			/**
 			 * Call the import and format function
-			 * @param {number} id id of the user
-			 * @return {Array<object>} Daily activity datas (sessions, kg and calories)
+			 * {Array<object>} Daily activity datas (sessions, kg and calories)
 			 */
 			const newDatas = await getDailyActivityData(userId.id);
 			setDatas(newDatas);

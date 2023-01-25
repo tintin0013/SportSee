@@ -1,4 +1,32 @@
-import API from "../utils/Api"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: utils/FormatData.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: utils/FormatData.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import API from "../utils/Api"
 
 /**
  * @file FormatData.js is an import and format datas file
@@ -10,12 +38,11 @@ export function getAPI() {
 }
 
 /**
- * @async function
+ * @async 
+ * 
  * import and format user datas
  * @param {number} id id of the user
  * @param {string} firstName first name of the user
- * @param {string} lastName last name of the user
- * @param {number} age age of the user
  * @returns {object} user datas
  */
 export async function getUserData(id) {
@@ -37,13 +64,13 @@ export async function getUserData(id) {
 
 
 /**
- * @async function
+ * @async 
  * import and format data for the daily activity chart
  * @param {number} id id of the user
  * @param {number} kilogram kilogram of the user
  * @param {number} calories calories of the user
  * @param {number} day day number of the user
- * @returns {array<object>} Each objects contains kilogram, calories and day
+ * @returns {array&lt;object>} Each objects contains kilogram, calories and day
  */
 export async function getDailyActivityData(id) {
 
@@ -56,7 +83,7 @@ export async function getDailyActivityData(id) {
 	
 	/**
 	 * Map the datas in an array.
-	 * {Array<object>} contains kilogram, calories and day
+	 * {Array&lt;object>} contains kilogram, calories and day
 	 */
 	let userDataDisplay = userData.map(({ kilogram, calories }, index) => {
 		return {
@@ -69,12 +96,12 @@ export async function getDailyActivityData(id) {
 }
 
 /**
- * @async function
+ * @async 
  * import and format data for the average duration chart
  * @param {number} id id of the user
  * @param {string} name name of the day
  * @param {number} sessionLength duration session's length
- * @returns {Array<object>} Each objects contains name and session's length
+ * @returns {Array&lt;object>} Each objects contains name and session's length
  */
 export async function getAverageChartData(id) {
 
@@ -86,14 +113,14 @@ export async function getAverageChartData(id) {
 
 	/**
 	 * Array contains each days
-	 * {Array<letters>} contains L, M, M, J, V, S, D
+	 * {Array&lt;letters>} contains L, M, M, J, V, S, D
 	 */
 	const days = ["L", "M", "M", "J", "V", "S", "D"];
 	const sessions = response.data.sessions;
 
 	/**
 	 * Push the datas in an array.
-	 * {Array<object>} contains name and duration session's length
+	 * {Array&lt;object>} contains name and duration session's length
 	 */
 	let results = [];
 	sessions.forEach((session) => {
@@ -106,12 +133,12 @@ export async function getAverageChartData(id) {
 }
 
 /**
- * @async function
+ * @async 
  * import and format data for the radar chart
  * @param {number} id id of the user
  * @param {number} value value of the kind
  * @param {string} kind kind of the value
- * @returns {Array<object>} Each objects contains value and kind
+ * @returns {Array&lt;object>} Each objects contains value and kind
  */
 export async function getRadarData(id) {
 
@@ -136,7 +163,7 @@ export async function getRadarData(id) {
 
 	/**
 	 * Map the datas in an array.
-	 * {Array<object>} contains value and kind
+	 * {Array&lt;object>} contains value and kind
 	 */
 	let stat = userData.map(( {value, kind} ) => ({
 		value,
@@ -146,7 +173,7 @@ export async function getRadarData(id) {
 }
 
 /**
- * @async function
+ * @async 
  * import and format data for the score chart
  * @param {number} id id of the user
  * @param {number} score score of the user
@@ -168,7 +195,7 @@ export async function getScoreData(id) {
 }
 
 /**
- * @async function
+ * @async 
  * import and format macronutrient datas
  * @param {number} id id of the user
  * @param {number} calorieCount calorie count of the user
@@ -193,3 +220,26 @@ export async function getMacronutrientData(id) {
 	const userData = response.data.keyData;
 	return userData;
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AverageDurationChart">AverageDurationChart</a></li><li><a href="global.html#DailyActivityChart">DailyActivityChart</a></li><li><a href="global.html#HorizontalNav">HorizontalNav</a></li><li><a href="global.html#Macronutrient">Macronutrient</a></li><li><a href="global.html#RadarsChart">RadarsChart</a></li><li><a href="global.html#ScoreChart">ScoreChart</a></li><li><a href="global.html#Switch">Switch</a></li><li><a href="global.html#VerticalNav">VerticalNav</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageChartData">getAverageChartData</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getDailyActivityData">getDailyActivityData</a></li><li><a href="global.html#getMacronutrientData">getMacronutrientData</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#getRadarData">getRadarData</a></li><li><a href="global.html#getScoreData">getScoreData</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserData">getUserData</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Jan 25 2023 19:34:14 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
