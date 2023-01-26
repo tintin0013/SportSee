@@ -31,7 +31,7 @@ If you are working with several versions of NodeJS, we recommend you install nvm
 - `http://localhost:3000/user/${userId}/average-sessions` retrieves the average sessions of a user per day. The week starts on Monday.
 - `http://localhost:3000/user/${userId}/performance` retrieves a user's performance (energy, endurance, etc.).
 
-Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.
+> Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.
 
 ### `Examples of queries`
  
