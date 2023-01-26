@@ -40,6 +40,9 @@ export default class API {
             else {
                 const res = await axios
                 .get(`http://localhost:3000/user/${id}`)
+                .catch((err) =>
+				alert("Erreur 503 : The server is currently unavailable.")
+			);
                     return res.data;
                 }
         }
