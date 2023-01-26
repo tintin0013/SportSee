@@ -36,4 +36,4 @@ If you are working with several versions of NodeJS, we recommend you install nvm
 ### `Examples of queries`
  
 - `http://localhost:3000/user/12/performance` - Retrieves the performance of the user with id 12
-- http://localhost:3000/user/18 `http://localhost:3000/user/18` - Retrieves user 18's main information.
+- `http://localhost:3000/user/18` - Retrieves user 18's main information.
