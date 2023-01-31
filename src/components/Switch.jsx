@@ -32,9 +32,11 @@ const Switch = ({ rounded = true, }) => {
          */
         if (event.target.checked) {
             change.changeMockMode(false)
+            alert("recuperation des datas a partir de l' API")
             console.log("checked", change);
         } else {
             change.changeMockMode(true)
+            alert("recuperation des datas a partir du json")
             console.log("unChecked", change);
         }
         setIsChecked(current => !current)
